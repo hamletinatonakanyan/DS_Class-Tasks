@@ -9,20 +9,20 @@ class Money:
         self.amount = currency_amount
         self.currency = currency_name
 
-    # class method for printing currency amount for beginning
+    # class method for printing amount of currency
     def print_obj(self):
         return f'Exists {self.amount} {self.currency}.'
 
-    # class method for summing 2 same type of currencies
+    # class method for summing two currencies
     def sum(self, amount1, amount2):
         return amount1.amount - amount2.amount
 
-    # class method for subtracting two same type of currencies
+    # class method for subtracting two currencies
     def sub(self, amount1, amount2):
         return amount1.amount - amount2.amount
 
 
-# function for defining class objects, making operations with them and printing
+# function for defining class objects, calling class methods, printing results
 def main():
 
     baht1 = Money(5000, 'THB')
