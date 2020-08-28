@@ -7,15 +7,17 @@ class Money:
 
     # data method for printing amount of currency
     def print_obj(self):
-        print(f'Exists {self.amount} {self.currency}.')
+        return str(self.amount) + ' ' + str(self.currency)
 
     # data method for summing two currencies
     def sum(self, other):
-        return f'After summing: {self.amount + other.amount} {self.currency}'
+        money_amount = self.amount + other.amount
+        return Money(money_amount, self.currency)
 
     # data method for subtracting two currencies
     def sub(self, other):
-        return f'After subtracting: {self.amount - other.amount} {self.currency}'
+        money_amount = self.amount - other.amount
+        return Money(money_amount, self.currency)
 
 
 # function for making class objects, calling methods, printing results
@@ -26,16 +28,14 @@ def main():
     baht2 = Money(1000, 'THB')
 
     # printing new instances
-    baht1.print_obj()
-    baht2.print_obj()
+    print(baht1.print_obj())
+    print(baht2.print_obj())
 
     # summing two currencies of new created class objects and printing result
-    summing = baht1.sum(baht2)
-    print(summing)
+    print('After summing two currencies: ', baht1.sum(baht2).print_obj())
 
-    # subtracting two currencies of new created class objects and printing result
-    subtract = baht1.sub(baht2)
-    print(subtract)
+    # subtracting two currencies of new created objects and printing result
+    print('After subtracting two currencies: ', baht1.sub(baht2).print_obj())
 
 
 # calling function
