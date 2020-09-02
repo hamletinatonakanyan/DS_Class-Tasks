@@ -5,7 +5,7 @@ Theme 1: BuiltIn Types.
 
 Theme 2: Working with loops and conditions.
 
-Theme 3: Functions, recurstion.
+Theme 3: Functions, recursion.
 
 Theme 4: Sets, Dictionaries.
 
