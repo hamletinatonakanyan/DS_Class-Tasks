@@ -21,8 +21,8 @@ class Rational:
 
     # static method for returning new object with value of least common multiple
     @staticmethod
-    def lcm(n, d):
-        return (n * d) / Rational.gcd(n, d)
+    def lcm(d1, d2):
+        return (d1 * d2) / Rational.gcd(d1, d2)
 
     # overloading some dunder methods
     def __add__(self, other):
@@ -86,5 +86,3 @@ class Rational:
         num = self.numerator ** power
         denom = self.denominator ** power
         return Rational(num, denom)
-
-
