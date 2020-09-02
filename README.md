@@ -9,4 +9,4 @@ Theme 3: Functions, recurstion.
 
 Theme 4: Sets, Dictionaries.
 
-Theme 5-7: OOP: Class, Data memebers and methods, Encapsulation, Inheritance, Dunder methods and verloading operations.
+Theme 5-7: OOP: Class, Data memebers and methods, Encapsulation, Inheritance, Dunder methods and overloading operations.
