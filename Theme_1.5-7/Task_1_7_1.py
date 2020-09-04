@@ -34,7 +34,8 @@ class Student(Person):
 
     def __repr__(self):
         person = super().__repr__()
-        return f"{person}\nStudent of {self.__faculty} faculty,{self.__university}, {self.__course}-th course, middle score-{self.__middle_score}."
+        return f"{person}\nStudent of {self.__faculty} faculty,{self.__university}, {self.__course}-th course,\
+                 middle score-{self.__middle_score}."
 
     def get_score(self):
         return self.__middle_score
@@ -64,11 +65,12 @@ class Teacher(Person):
         self.__faculty = faculty
         self.__discipline = discipline
         self.__experience = experience
-        self.__salary = salary
+        self.__salary = f'{salary} USD'
 
     def __repr__(self):
         teacher = super().__repr__()
-        return f"{teacher}\nTeacher of '{self.get_discipline()}' subject, faculty - {self.get_faculty()}, {self.get_university()}, experience-{self.get_experience()} years, salary-{self.get_salary()}."
+        return f"{teacher}\nTeacher of '{self.__discipline}' subject, faculty - {self.__faculty}, {self.__university}, \
+                 experience-{self.__experience} years, salary-{self.__salary}."
 
     def get_discipline(self):
         return self.__discipline
@@ -83,4 +85,4 @@ class Teacher(Person):
         return int(self.__experience)
 
     def get_salary(self):
-        return f"{int(self.__salary)} USD"
+        return self.__salary
