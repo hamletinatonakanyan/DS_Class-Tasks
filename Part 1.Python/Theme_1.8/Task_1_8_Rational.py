@@ -5,36 +5,29 @@ class RationalEx:
                 raise TypeError
         except TypeError:
             print('RationalE constructor: numerator must be integer')
+        else:
+            self.numerator = num
 
         try:
             if type(denom) is not int:
                 raise TypeError
-        except TypeError:
-            print('RationalE constructor: denominator must be integer')
-
-        try:
-            if denom == 0:
+            elif denom == 0:
                 raise ZeroDivisionError
         except ZeroDivisionError:
             print('RationalE constructor: denominator can\'t be zero')
+        except TypeError:
+            print('RationalE constructor: denominator must be integer')
+        else:
+            self.denominator = denom
 
-        self.numerator = num
-        self.denominator = denom
-
-        # simplifying the object's values through method great common divisor
-        gc_div = RationalEx.gcd(self.numerator, self.denominator)
-        self.numerator //= gc_div
-        self.denominator //= gc_div
+            # simplifying the object's values through method great common divisor
+            gc_div = RationalEx.gcd(self.numerator, self.denominator)
+            self.numerator //= gc_div
+            self.denominator //= gc_div
 
     # overriding dunder method for printing
     def __repr__(self):
-        try:
-            if self.denominator == 0:
-                raise ZeroDivisionError
-        except ZeroDivisionError:
-            print('RationalE __repr__: denominator can\'t be zero')
-        else:
-            return f'{self.numerator} {self.denominator}'
+        return f'{self.numerator} {self.denominator}'
 
     # static method for returning new object with value of great common divisor
     @staticmethod
@@ -190,4 +183,7 @@ class RationalEx:
 rati1 = RationalEx(7, 6)
 rati2 = RationalEx(5, 0)
 
-print(rati1 <= rati2)
+try:
+    print(rati1 <= rati2)
+except AttributeError:
+    print('There is no such attribute')
