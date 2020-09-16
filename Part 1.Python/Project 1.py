@@ -33,7 +33,7 @@ class Room:
             print(f'Room.reserve(): Incorrect number of free rooms. We have only {self.__count} available rooms.')
         else:
             self.__count -= cnt
-            print(f'Room.reserve(): {cnt} rooms has been successfully reserved.')
+            print(f'{cnt} rooms has been successfully reserved.')
 
     def checkout(self, cnt):
         reserved_rooms_count = self.__total_rooms_count - self.__count
@@ -44,7 +44,7 @@ class Room:
             print(f'Room.checkout(): Incorrect number of rooms for checking out. You have reserved only {reserved_rooms_count} rooms.')
         else:
             self.__count += cnt
-            print(f'Room.checkout(): {cnt} rooms has been successfully checked out.')
+            print(f'{cnt} rooms has been successfully checked out.')
 
 
 class Hotel:
@@ -150,7 +150,7 @@ class Customer:
             if hotel is None:
                 raise ReservationException
         except ReservationException:
-            print(f"Customer.checkout(): There isn't hotel by {hotel_name}.")
+            print(f"Customer reservation(): There isn't hotel by {hotel_name}.")
         else:
             return hotel.reserve(room_type, room_count)
 
