@@ -1,7 +1,8 @@
 # DS_Class-Tasks
-Python: Introduction to Data Science!!! 
+               Python: Introduction to Data Science
 _______________________________________
 Part 1. Python programming language
+_______________________________________
 
 Theme 1.1: BuiltIn Types.
 
@@ -15,4 +16,9 @@ Theme 1.5-1.7: OOP: Class, Data memebers and methods, Encapsulation, Inheritance
 
 Theme 1.8: Exceptions
 
-Project: 1st part final project. 
+Project1: Hotel's room reservation system.
+
+__________________________________________________
+Part 2. Data Analysis
+__________________________________________________
+Theme 2.1 Numpy.Introduction
