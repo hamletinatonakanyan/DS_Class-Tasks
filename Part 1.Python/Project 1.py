@@ -1,3 +1,7 @@
+class ReservationException(Exception):
+    pass
+
+
 class Room:
     """
     Class: as arguments gets the type and amount of free rooms, returns available free rooms type and count.
@@ -163,8 +167,65 @@ class Customer:
         return hotel.set_rating(rate)
 
 
-class ReservationException(Exception):
-    pass
+class Booking:    # to be continued
+
+    def __init__(self, customers_list):
+        self.__customers_list = customers_list
+        self.__customer_data = dict()
+
+    def check_customer(self, customer):
+        try:
+            if customer not in self.__customer_data:
+                raise ValueError
+        except ValueError:
+            print(f'Booking.check_customer(): there is not the {customer} customer.')
+        else:
+            return customer
+
+    @staticmethod
+    def id_generator():
+        import random
+        import string
+        size = 4
+        letters = ''.join(random.sample(string.ascii_letters, size))
+        numbers = random.randint(10, 1000)
+        id = str(numbers) + letters
+        return id
+
+    def set_customer_data(self):
+        for customer in self.__customers_list:
+            id = self.id_generator()
+            hotel_name = ''                        # ????????????
+            room_type = ''                         # ????????????
+            room_count = ''                        # ????????????
+            self.__customer_data.update(
+                {customer:
+                    {'ID': id,
+                     'hotel_name': hotel_name,
+                     'room_type': room_type,
+                     'room_count': room_count}
+                 }
+            )
+
+    def get_customer_id(self, cst):
+        customer = self.check_customer(cst)
+        customer_id = self.__customer_data[customer]['ID']
+        return customer_id
+
+    def get_customer_chosen_hotel(self, cst):
+        customer = self.check_customer(cst)
+        customer_hotel = self.__customer_data[customer]['hotel_name']
+        return customer_hotel
+
+    def get_customer_chosen_room(self, cst):
+        customer = self.check_customer(cst)
+        customer_room = self.__customer_data[customer]['room_type']
+        return customer_room
+
+    def get_customer_room_count(self, cst):
+        customer = self.check_customer(cst)
+        customer_room_count = self.__customer_data[customer]['room_count']
+        return customer_room_count
 
 
 def main():
@@ -180,13 +241,32 @@ def main():
     hotel1 = Hotel('Messier87', rooms_list1)
     hotel2 = Hotel('Andromeda', rooms_list2)
     hotel3 = Hotel('Halsey', rooms_list3)
-    hotels_list = [hotel1, hotel2, hotel3]
+    hotels_list1 = [hotel1, hotel3]
+    hotels_list2 = [hotel3, hotel2]
+    hotels_list3 = [hotel1, hotel3]
 
-    customer1 = Customer(hotels_list)
+    customer1 = Customer(hotels_list1)
+    customer2 = Customer(hotels_list2)
+    customer3 = Customer(hotels_list3)
+
     customer1.reservation('Messier87', 'president', 2)
     customer1.checking_out('Messier87', 'president', 2)
     customer1.rate('Messier87', 4.6)
     hotel1.get_rating()
+
+    customers_list = [customer1, customer2, customer3]
+
+    booking = Booking(customers_list)
+    booking.set_customer_data()
+    c_id = booking.get_customer_id(customer3)
+    c_hotel = booking.get_customer_chosen_hotel(customer3)
+    room_type = booking.get_customer_chosen_room(customer3)
+    room_count = booking.get_customer_room_count(customer3)
+
+    print("\nCustomer's ID: ", c_id)
+    print("Hotel chosen by customer: ", c_hotel)
+    print("Hotel's room type chosen by customer: ", room_type)
+    print("Hotel's room amount chosen by customer: ", room_count)
 
 
 main()
