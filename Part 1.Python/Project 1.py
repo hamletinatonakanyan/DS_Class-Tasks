@@ -303,9 +303,11 @@ def main():
             room_type = custom_data[customer]['room_type']
             room_count = custom_data[customer]['room_count']
 
-            if c_hotel is None or room_type is None or room_count is None:
+            if c_hotel is None:
                 c_hotel = 'Null'
+            elif room_type is None:
                 room_type = 'Null'
+            elif room_count is None:
                 room_count = 0
 
             writer.writerow(
