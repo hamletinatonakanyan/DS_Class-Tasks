@@ -1,5 +1,6 @@
 import numpy as np
 
+#%%
 # 1. Write a NumPy program to compute the multiplication of two given matrices
 
 # generate first 3D matrix
@@ -15,6 +16,7 @@ mult = np.dot(np_arr1, np_arr2)
 print('\nMultiplication of 2 matrices:\n', mult)
 
 
+#%%
 # 2. Write a NumPy program to compute the determinant of an array
 
 # generate 3D matrix
@@ -26,6 +28,7 @@ det = np.linalg.det(np_arr)
 print('\nDeterminant of given matrix:\n', det)
 
 
+#%%
 # 3. Write a NumPy program to compute the sum of the diagonal element of a given array
 
 # generate 2D and 3D matrices and output the sum of those diagonal respectively
@@ -45,6 +48,7 @@ arr_3D_diag_sum = np.trace(diag_3D)
 print('\nSum of the diagonal of the given 3D matrix:\n', arr_3D_diag_sum)
 
 
+#%%
 # 4. Write a NumPy program to compute the inverse of a given matrix
 from numpy.linalg import inv
 
@@ -62,6 +66,7 @@ diag_eye_matrix = pre_inv_matrix.dot(inv(pre_inv_matrix))
 print('\nMatrix with ones in diagonal:\n', diag_eye_matrix)
 
 
+#%%
 # 5. Write a NumPy program to generate matrix and write it to a file, then again read from file that matrix.
 
 # write a few arrays to a file
