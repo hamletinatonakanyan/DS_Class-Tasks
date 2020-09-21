@@ -264,6 +264,39 @@ class Booking:
         )
         return self.__customer_data
 
+    def get_customer_data_to_csv(self):
+
+        with open('room_booking_system.csv', 'w') as res:
+            import csv
+            import numpy as np
+            fieldnames = ['customer_id', 'reserved_hotel', 'hotel_rating', 'reserved_room_type', 'reserved_room_count']
+            writer = csv.DictWriter(res, fieldnames=fieldnames)
+            writer.writeheader()
+
+            for customer in self.__customers_list:
+                custom_data = self.set_customer_data(customer)
+
+                id = custom_data[customer]['ID']
+                hotel = custom_data[customer]['hotel_name']
+                room_type = custom_data[customer]['room_type']
+                room_count = custom_data[customer]['room_count']
+                hotel_rating = custom_data[customer]['hotel_rating']
+
+                if hotel is None:
+                    hotel = np.nan
+                    hotel_rating = np.nan
+                    room_type = np.nan
+                    room_count = np.nan
+
+                writer.writerow(
+                    {'customer_id': id,
+                     'reserved_hotel': hotel,
+                     'hotel_rating': hotel_rating,
+                     'reserved_room_type': room_type,
+                     'reserved_room_count': room_count
+                     }
+                )
+
 
 def main():
     """
@@ -300,40 +333,11 @@ def main():
 
     customer2.reservation('Andromeda', 'single', 4)
     customer2.checking_out('Andromeda', 'single', 4)
-    customer2.rate('Andromeda', 4.9)
+    customer2.rate('Andromeda', 4.8)
     print(f'Your reserved hotel\'s rating is:  {hotel2.get_rating()}')
 
     booking = Booking(customers_list)
-
-    with open('room_booking_system.csv', 'w') as res:
-        import csv
-        import numpy as np
-        fieldnames = ['customer_id', 'reserved_hotel', 'hotel_rating', 'reserved_room_type', 'reserved_room_count']
-        writer = csv.DictWriter(res, fieldnames=fieldnames)
-        writer.writeheader()
-
-        for customer in customers_list:
-            custom_data = booking.set_customer_data(customer)
-            c_id = custom_data[customer]['ID']
-            c_hotel = custom_data[customer]['hotel_name']
-            room_type = custom_data[customer]['room_type']
-            room_count = custom_data[customer]['room_count']
-            hotel_rating = custom_data[customer]['hotel_rating']
-
-            if c_hotel is None:
-                c_hotel = np.nan
-                hotel_rating = np.nan
-                room_type = np.nan
-                room_count = np.nan
-
-            writer.writerow(
-                {'customer_id': c_id,
-                 'reserved_hotel': c_hotel,
-                 'hotel_rating': hotel_rating,
-                 'reserved_room_type': room_type,
-                 'reserved_room_count': room_count
-                 }
-            )
+    booking.get_customer_data_to_csv()
 
 
 if __name__ == "__main__":
