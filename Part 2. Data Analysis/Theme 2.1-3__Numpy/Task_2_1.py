@@ -1,8 +1,8 @@
 import numpy as np
 
+#%%
 # 1.Write a NumPy program to convert a list of numeric values into a one-dimensional NumPy array.
 
-#%%
 num_list = [i for i in range(1, 100, 5)]
 print(f'Python list:\n{num_list}')
 
