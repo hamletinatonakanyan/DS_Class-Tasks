@@ -162,9 +162,10 @@ class Customer:
                 return n
         return None
 
-    def get_hotels_rating(self):
+    def get_hotels_rating(self, hotel_name):
         for hotel in self.__hotel_list:
-            return hotel.get_rating()
+            if hotel_name == hotel.get_hotel_name():
+                return hotel.get_rating()
 
     def reservation(self, hotel_name, room_type, room_count):
         hotel = self.get_hotel_by_name(hotel_name)
@@ -250,7 +251,7 @@ class Booking:
         hotel_name = customer.get_name_of_reserved_hotel()
         room_type = customer.get_reserved_room_type()
         room_count = customer.get_reserved_room_count_by_type()
-        hotel_rating = customer.get_hotels_rating()
+        hotel_rating = customer.get_hotels_rating(hotel_name)
 
         self.__customer_data.update(
             {customer:
@@ -296,6 +297,11 @@ def main():
     customer1.checking_out('Messier87', 'president', 2)
     customer1.rate('Messier87', 4.6)
     print(f'Your reserved hotel\'s rating is:  {hotel1.get_rating()}')
+
+    customer2.reservation('Andromeda', 'single', 4)
+    customer2.checking_out('Andromeda', 'single', 4)
+    customer2.rate('Andromeda', 4.9)
+    print(f'Your reserved hotel\'s rating is:  {hotel2.get_rating()}')
 
     booking = Booking(customers_list)
 
