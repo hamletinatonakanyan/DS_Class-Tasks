@@ -20,7 +20,8 @@ print('Making numpy array through arange function and reshaping it to 3D (2, 2, 
 #%%
 # 3.Write a NumPy program to create a null vector of size 10 and update sixth to eight values to 11.
 
-null_vector = np.zeros(10)
+null_vector = np.empty(10)
+null_vector[:] = np.NaN
 print('Null vector is:\n', null_vector)
 null_vector[5:8] = 11
 print('Updated vector is:\n', null_vector)
