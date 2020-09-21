@@ -91,8 +91,9 @@ class Hotel:
 
     def get_rating(self):
         if self.__rater_count == 0:
-            print('Hotel rating is: ', 0)
-        print(f'{self.get_hotel_name()} hotel\'s rating is: {self.__rating / self.__rater_count}')
+            return 0
+        self.__rating /= self.__rater_count
+        return self.__rating
 
     def set_rooms(self, room):
         self.__rooms.append(room)
@@ -134,7 +135,8 @@ class Customer:
     1. hotel_list - list, list of hotels
     2. room_type - str, the room type reserved by each customer
     3. room_count_by_type - int, count of room reserved by each customer
-    4. hotel_name - str, name hof hotel where was reserved room by esach customer
+    4. hotel_name - str, name of hotel where was reserved room by each customer
+    5. hotel_rating - int, rating of hotel
     methods:
     1. get_hotel_by_name(): checks if the hotel exists in the list of hotels or not and return Hotel type object
     2. reservation(): as argument takes hotel's name, room's type and count, through calling hotel reservation \
@@ -144,6 +146,7 @@ class Customer:
     5. get_name_of_reserved_hotel(): gets the name of reserved hotel
     6. get_reserved_room_type(): gets type of reserved room
     7. get_reserved_room_count_by_type(): gets count of reserved room
+    8. get_hotels_rating(): gets rating of hotel
     """
 
     def __init__(self, hotel_list):
@@ -151,12 +154,17 @@ class Customer:
         self.__room_type = None
         self.__room_count_by_type = 0
         self.__hotel_name = None
+        self.__hotel_rating = 0
 
     def get_hotel_by_name(self, name):
         for n in self.__hotel_list:
             if name == n.get_hotel_name():
                 return n
         return None
+
+    def get_hotels_rating(self):
+        for hotel in self.__hotel_list:
+            return hotel.get_rating()
 
     def reservation(self, hotel_name, room_type, room_count):
         hotel = self.get_hotel_by_name(hotel_name)
@@ -206,12 +214,11 @@ class IdGenerator:
         letters = ''.join(random.sample(string.ascii_letters, size))
         numbers = random.randint(10, 1000)
 
-        if type(self.__type) is Room:
-            return 'r_' + str(numbers) + letters
-        elif type(self.__type) is Hotel:
-            return 'h_' + str(numbers) + letters
-        elif type(self.__type) is Customer:
-            return 'c_' + str(numbers) + letters
+        # str(object_type), example:  str(Room) -> <class '__main__.Room'>, object's first letter = 17th index
+        object_type_first_letter = str(type(self.__type)).lower()[17]
+        id = object_type_first_letter + str(numbers) + letters
+
+        return id
 
 
 class Booking:
@@ -243,13 +250,15 @@ class Booking:
         hotel_name = customer.get_name_of_reserved_hotel()
         room_type = customer.get_reserved_room_type()
         room_count = customer.get_reserved_room_count_by_type()
+        hotel_rating = customer.get_hotels_rating()
 
         self.__customer_data.update(
             {customer:
                 {'ID': id,
                  'hotel_name': hotel_name,
                  'room_type': room_type,
-                 'room_count': room_count}
+                 'room_count': room_count,
+                 'hotel_rating': hotel_rating}
              }
         )
         return self.__customer_data
@@ -286,13 +295,14 @@ def main():
     customer1.reservation('Messier87', 'president', 2)
     customer1.checking_out('Messier87', 'president', 2)
     customer1.rate('Messier87', 4.6)
-    hotel1.get_rating()
+    print(f'Your reserved hotel\'s rating is:  {hotel1.get_rating()}')
 
     booking = Booking(customers_list)
 
     with open('room_booking_system.csv', 'w') as res:
         import csv
-        fieldnames = ['customer_id', 'reserved_hotel', 'reserved_room_type', 'reserved_room_count']
+        import numpy as np
+        fieldnames = ['customer_id', 'reserved_hotel', 'hotel_rating', 'reserved_room_type', 'reserved_room_count']
         writer = csv.DictWriter(res, fieldnames=fieldnames)
         writer.writeheader()
 
@@ -302,17 +312,18 @@ def main():
             c_hotel = custom_data[customer]['hotel_name']
             room_type = custom_data[customer]['room_type']
             room_count = custom_data[customer]['room_count']
+            hotel_rating = custom_data[customer]['hotel_rating']
 
             if c_hotel is None:
-                c_hotel = 'Null'
-            elif room_type is None:
-                room_type = 'Null'
-            elif room_count is None:
-                room_count = 0
+                c_hotel = np.nan
+                hotel_rating = np.nan
+                room_type = np.nan
+                room_count = np.nan
 
             writer.writerow(
                 {'customer_id': c_id,
                  'reserved_hotel': c_hotel,
+                 'hotel_rating': hotel_rating,
                  'reserved_room_type': room_type,
                  'reserved_room_count': room_count
                  }

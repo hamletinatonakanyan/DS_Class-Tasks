@@ -1,4 +1,4 @@
-customer_id,reserved_hotel,reserved_room_type,reserved_room_count
-c_161heIS,Messier87,president,2
-c_473qstB,Null,,0
-c_710JBye,Null,,0
+customer_id,reserved_hotel,hotel_rating,reserved_room_type,reserved_room_count
+c674ROik,Messier87,4.6,president,2
+c964NlRL,nan,nan,nan,nan
+c601Elyp,nan,nan,nan,nan
