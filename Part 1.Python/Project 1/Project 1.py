@@ -230,6 +230,7 @@ class Booking:
     1. check_customer(): as argument takes customer, returns- checks if each customer exists in the customer list
     2. set_customer_data(): as argument takes customer, \
                             returns information about each customer's id, reserved hotel, room's type and count
+    3. get_customer_data_to_csv(): collecting reservation data by customers to csv file
 
     """
 
@@ -300,9 +301,8 @@ class Booking:
 
 def main():
     """
-    Function: creates Room, Hotel, Customer types objects, makes list from those objects, \
-              writes information about id, reserved hotel, room, count of rooms \
-              by each customer in csv file named 'room_booking_system.csv'
+    Function: creates Room, Hotel, Customer, Booking types objects, \
+              makes list from those objects calls methods from respective classes.
     """
 
     room1 = Room('president', 4)
