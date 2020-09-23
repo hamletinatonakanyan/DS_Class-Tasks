@@ -21,4 +21,6 @@ Project1: Hotel's room reservation system.
 __________________________________________________
 Part 2. Data Analysis
 __________________________________________________
-Theme 2.1 Numpy.Introduction
+Theme 2.1 Numpy. Introduction
+Theme 2.2 Numpy. Linear Algebra
+Theme 2.3 Numpy. Broadcasting
