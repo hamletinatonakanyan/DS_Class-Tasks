@@ -12,7 +12,7 @@ Theme 1.3: Functions, recursion.
 
 Theme 1.4: Sets, Dictionaries.
 
-Theme 1.5-1.7: OOP: Class, Data memebers and methods, Encapsulation, Inheritance, Dunder methods and overloading operations.
+Theme 1.5-1.7: OOP: Class, Data members and methods, Encapsulation, Inheritance, Dunder methods and overloading operations.
 
 Theme 1.8: Exceptions
 
@@ -22,5 +22,10 @@ __________________________________________________
 Part 2. Data Analysis
 __________________________________________________
 Theme 2.1 Numpy. Introduction
+
 Theme 2.2 Numpy. Linear Algebra
+
 Theme 2.3 Numpy. Broadcasting
+
+Theme 2.4 Pandas. Series, DataFrames, Indexing, Sorting
+
