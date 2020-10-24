@@ -29,3 +29,14 @@ Theme 2.3 Numpy. Broadcasting
 
 Theme 2.4 Pandas. Series, DataFrames, Indexing, Sorting
 
+Theme 2.5 Pandas. Reading data, working with DataBases
+
+Theme 2.6 Pandas. Data cleaning
+
+Theme 2.7 Pandas. Data wrangling
+
+Theme 2.8 Pandas. Group by, Pivot table
+
+Theme 2.9 Pandas. Datetime, timezones
+
+Project2: Reading, cleaning, grouping and visualizing data
