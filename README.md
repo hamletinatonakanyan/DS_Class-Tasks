@@ -40,3 +40,19 @@ Theme 2.8 Pandas. Group by, Pivot table
 Theme 2.9 Pandas. Datetime, timezones
 
 Project2: Reading, cleaning, grouping and visualizing data
+
+___________________________________________________________
+Part 3. Machine Learning
+___________________________________________________________
+Theme 3.1-3.2  Introduction to ML. Supervised and Unsupervised models.
+Models evaluating. Overfitting and Underfitting
+
+Theme 3.3-3.4 Regression models. Gradient Descent algorithm, Regularization
+
+Theme 3.5 Support Vector Machine. Regression and Classification
+
+Theme 3.6 Decision Trees. CART algorithm
+
+Theme 3.7 Unsupervised learning models. K-means, Gaussian blur
+
+
