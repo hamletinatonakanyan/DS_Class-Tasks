@@ -55,4 +55,6 @@ Theme 3.6 Decision Trees. CART algorithm
 
 Theme 3.7 Unsupervised learning models. K-means, Gaussian blur
 
+Final project: Student performance analysis - evaluation of performance of all students using Machine Learning techniques.
+
 
